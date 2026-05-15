@@ -1,0 +1,7 @@
+@import "tailwindcss";
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+.sora {
+  font-family: 'Sora', sans-serif;
+}

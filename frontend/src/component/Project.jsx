@@ -1,7 +1,9 @@
 function Project(params) {
-    return(
+    return (
         <>
-        <h1>Project</h1>
+            <div id="project" className="w-full h-screen">
+
+            </div>
         </>
     )
 }

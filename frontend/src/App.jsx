@@ -9,22 +9,28 @@ import {motion} from 'motion/react'
 function App() {
   return (
     <>
-      <div className='relative w-full h-screen bg-black z-[-2]'>
+      <div className='relative w-full min-h-screen bg-black'>
         <motion.img
-        animate={{
-          opacity:[1, 0.8, 0.5 , 0.8, 1]
-        }}
-        transition={{
-          duration:5,
-          repeat:Infinity
-        }}
-        src={bg} alt="" className='w-full min-h-screen fixed z-[-1]' />
-        <Navbar />
-        <Home />
-        <About />
-        <Skills />
-        <Project />
-        <Contact />
+          animate={{
+            opacity: [1, 0.85, 0.6, 0.85, 1]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
+          src={bg}
+          alt=""
+          className='w-full h-screen fixed top-0 left-0 object-cover z-0 pointer-events-none'
+        />
+        <div className='relative z-10'>
+          <Navbar />
+          <Home />
+          <About />
+          <Skills />
+          <Project />
+          <Contact />
+        </div>
       </div>
     </>
   )

@@ -1,11 +1,12 @@
 import bg from './assets/bg.jpeg'
-import Home from './component/Home.jsx'
-import Navbar from './component/Navbar.jsx'
-import About from './component/About.jsx'
-import Skills from './component/Skills.jsx'
-import Project from './component/Project.jsx'
-import Contact from './component/Contact.jsx'
-import {motion} from 'motion/react'
+import { motion } from 'motion/react'
+import { lazy, Suspense } from "react";
+import Navbar from "./component/Navbar.jsx";
+const Home = lazy(() => import("./component/Home.jsx"));
+const About = lazy(() => import("./component/About.jsx"));
+const Skills = lazy(() => import("./component/Skills.jsx"));
+const Contact = lazy(() => import("./component/Contact.jsx"));
+const Project = lazy(() => import("./component/Project.jsx"));
 function App() {
   return (
     <>
@@ -25,11 +26,13 @@ function App() {
         />
         <div className='relative z-10'>
           <Navbar />
-          <Home />
-          <About />
-          <Skills />
-          <Project />
-          <Contact />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+            <About />
+            <Skills />
+            <Project />
+            <Contact />
+          </Suspense>
         </div>
       </div>
     </>

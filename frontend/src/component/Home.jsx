@@ -5,7 +5,7 @@ import './Home.css'
 function Home(params) {
     return (
         <>
-            <div className="w-full h-[84vh] flex">
+            <div className="w-full h-[84vh] flex mb-[10vh]">
                 <div className="w-[50%] h-full flex flex-col justify-start items-start pl-[3vw] text-white pb-[3vh]">
                     <div className="pt-[5vh]">
                         <div className="mb-[4vh]">

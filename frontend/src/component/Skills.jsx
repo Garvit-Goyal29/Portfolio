@@ -1,7 +1,13 @@
 import Spline from '@splinetool/react-spline';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaJava, FaGitAlt, FaGithub } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiTailwindcss, SiVercel } from "react-icons/si";
+import { useInView } from 'react-intersection-observer'
+import './Skills.css'
 function Skills(params) {
+    const { ref: firstSkill, inView: fsVisible } = useInView({
+        threshold: 0.15,
+        triggerOnce: false
+    });
     const skills = [
         {
             title: "React",
@@ -54,7 +60,7 @@ function Skills(params) {
     ];
     return (
         <>
-            <div id="skills" className="border border-white w-full h-screen relative py-[3vh]">
+            <div ref={firstSkill} id="skills" className={`s ${fsVisible ? "ss" : ""} w-full h-screen relative py-[3vh]`}>
                 <div className="absolute inset-0 z-0">
                     <Spline scene="https://prod.spline.design/nVwbLanFnaJSzsOt/scene.splinecode" />
                 </div>
@@ -63,9 +69,9 @@ function Skills(params) {
                     {skills.map((skill, index) => {
                         const Icon = skill.icon;
                         return (
-                            <div key={index} className="w-[7vw] h-[10vh] p-1 bg-white/30 hover:bg-purple-900 hover:scale-[1.2] duration-150 transition rounded-xl flex flex-col items-center justify-center gap-2 pointer-events-auto">
-                                <Icon className="text-2xl text-black" />
-                                <p className="text-xs text-black">{skill.title}</p>
+                            <div key={index} className="w-[7vw] h-[9vh] p-1 bg-[#291A36] hover:bg-purple-900 hover:scale-[1.2] duration-150 transition rounded-xl flex flex-col items-center justify-center gap-2 pointer-events-auto">
+                                <Icon className="text-xl text-white" />
+                                <p className="text-xs text-white">{skill.title}</p>
                             </div>
                         );
                     })}

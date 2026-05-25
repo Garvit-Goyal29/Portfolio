@@ -1,7 +1,38 @@
 import Particles from '../component/Particles.jsx'
 import contactEle from '../assets/contactElement.png'
 import { motion } from 'motion/react'
+import { useState } from 'react'
 function Contact(params) {
+    const [name, setname] = useState("")
+    const [email, setemail] = useState("")
+    const [sub, setsub] = useState("")
+    const [mess, setmess] = useState("")
+    async function handlefrom(e) {
+        e.preventDefault()
+        try {
+            const data = await fetch("http://localhost:5000/api/handlecontactform", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body:
+                    JSON.stringify({
+                        name,
+                        email,
+                        sub,
+                        mess
+                    })
+            })
+            const res = data.json()
+            if (res.success) {
+                console.log(name," ",email," ",sub," ",mess)
+            } else {
+                console.log(err)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return (
         <>
             <div
@@ -26,25 +57,34 @@ function Contact(params) {
                                 <h1 className="text-3xl text-purple-400 mb-6 text-center sora">
                                     Contact Me
                                 </h1>
-                                <form className="flex flex-col gap-5">
+                                <form onSubmit={handlefrom}
+                                    className="flex flex-col gap-5">
                                     <input
                                         type="text"
                                         placeholder="Your Name"
+                                        value={name}
+                                        onChange={(e) => setname(e.target.value)}
                                         className="bg-transparent border border-white/20 rounded-lg px-1 py-2 text-white outline-none focus:border-purple-400 transition"
                                     />
                                     <input
                                         type="email"
                                         placeholder="Your Email"
+                                        value={email}
+                                        onChange={(e) => setemail(e.target.value)}
                                         className="bg-transparent border border-white/20 rounded-lg px-1 py-2 text-white outline-none focus:border-purple-400 transition"
                                     />
                                     <input
                                         type="text"
                                         placeholder="Subject"
+                                        value={sub}
+                                        onChange={(e) => setsub(e.target.value)}
                                         className="bg-transparent border border-white/20 rounded-lg px-1 py-2 text-white outline-none focus:border-purple-400 transition"
                                     />
                                     <textarea
                                         rows="5"
                                         placeholder="Your Message"
+                                        value={mess}
+                                        onChange={(e) => setmess(e.target.value)}
                                         className="bg-transparent border border-white/20 rounded-lg px-1 py-2 text-white outline-none focus:border-purple-400 transition resize-none"
                                     />
                                     <button

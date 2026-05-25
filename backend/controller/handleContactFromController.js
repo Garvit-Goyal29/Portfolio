@@ -1,7 +1,7 @@
 import transporter from "../service/mailer.js";
 async function handleContactFromController(req, res) {
     try {
-        const { name, email, subject, message } = req.body;
+        const { name, email, sub, mess } = req.body;
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_MAIN,
@@ -10,8 +10,8 @@ async function handleContactFromController(req, res) {
             <h2>New Contact</h2>
             <p>Name:${name}</p>
             <p>Email:${email}</p>
-            <p>Subject:${subject}</p>
-            <p>Message:${message}</p>`
+            <p>Subject:${sub}</p>
+            <p>Message:${mess}</p>`
         });
         res.status(200).json({
             success: true,

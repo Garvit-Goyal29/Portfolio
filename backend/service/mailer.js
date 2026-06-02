@@ -10,16 +10,17 @@ if (!process.env.EMAIL_PASS) {
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false, // Use STARTTLS instead of SSL
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
+    requireTLS: true,
     tls: {
         rejectUnauthorized: false
     },
-    family: 4 // Force IPv4 — Render free tier does not support outbound IPv6
+    family: 4
 });
 
 transporter.verify((err) => {

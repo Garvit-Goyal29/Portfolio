@@ -17,8 +17,9 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS
     },
     tls: {
-        rejectUnauthorized: false // Bypass SSL/TLS self-signed cert checks common in cloud host environments
-    }
+        rejectUnauthorized: false
+    },
+    family: 4 // Force IPv4 — Render free tier does not support outbound IPv6
 });
 
 transporter.verify((err) => {

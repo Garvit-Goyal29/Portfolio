@@ -20,11 +20,10 @@ async function handleContactFromController(req, res) {
         });
     }
     catch (err) {
-        console.log(err);
+        console.error("Mailer Error in handleContactFromController:", err);
         res.status(500).json({
             success: false,
-            message:
-                "Mail Failed"
+            message: err.message || "Mail Failed"
         });
     }
 

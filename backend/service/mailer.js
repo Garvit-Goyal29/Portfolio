@@ -8,15 +8,20 @@ if (!process.env.EMAIL_PASS) {
     console.error("mailer.js error: EMAIL_PASS environment variable is missing!");
 }
 
+const smtpPort = Number(process.env.SMTP_PORT || 465);
+
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // Use STARTTLS instead of SSL
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    requireTLS: true,
+    requireTLS: smtpPort !== 465,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     tls: {
         rejectUnauthorized: false
     },

@@ -23,14 +23,21 @@ function Contact(params) {
                         mess
                     })
             })
-            const res = data.json()
+            const res = await data.json()
             if (res.success) {
                 console.log(name," ",email," ",sub," ",mess)
+                alert("Message sent successfully!")
+                setname("")
+                setemail("")
+                setsub("")
+                setmess("")
             } else {
-                console.log(err)
+                console.error("Mail server error:", res.message || res)
+                alert("Failed to send message: " + (res.message || "Unknown error"))
             }
         } catch (err) {
-            console.log(err)
+            console.error("Network or execution error:", err)
+            alert("An error occurred while sending message. Please try again.")
         }
     }
     return (

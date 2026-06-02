@@ -11,7 +11,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://www.garvit.space/"
+      "https://www.garvit.space",
+      "https://garvit.space"
     ],
     methods: [
       "GET",

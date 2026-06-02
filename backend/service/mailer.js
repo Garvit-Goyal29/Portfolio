@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import dns from "node:dns";
 
 // Diagnostic checks to help debug missing variables in Render Logs
 if (!process.env.EMAIL_USER) {
@@ -9,6 +10,7 @@ if (!process.env.EMAIL_PASS) {
 }
 
 const smtpPort = Number(process.env.SMTP_PORT || 465);
+dns.setDefaultResultOrder("ipv4first");
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
@@ -22,6 +24,9 @@ const transporter = nodemailer.createTransport({
     connectionTimeout: 10000,
     greetingTimeout: 10000,
     socketTimeout: 15000,
+    lookup(hostname, options, callback) {
+        return dns.lookup(hostname, { ...options, family: 4 }, callback);
+    },
     tls: {
         rejectUnauthorized: false
     },

@@ -2,6 +2,11 @@ import Particles from '../component/Particles.jsx'
 import contactEle from '../assets/contactElement.png'
 import { motion } from 'motion/react'
 import { useState } from 'react'
+
+const API_BASE_URL =
+    import.meta.env.VITE_API_BASE_URL ||
+    (import.meta.env.DEV ? "http://localhost:5000" : "https://portfolio-sq6v.onrender.com");
+
 function Contact(params) {
     const [name, setname] = useState("")
     const [email, setemail] = useState("")
@@ -10,7 +15,7 @@ function Contact(params) {
     async function handlefrom(e) {
         e.preventDefault()
         try {
-            const data = await fetch("https://portfolio-sq6v.onrender.com/api/handlecontactform", {
+            const data = await fetch(`${API_BASE_URL}/api/handlecontactform`, {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json"

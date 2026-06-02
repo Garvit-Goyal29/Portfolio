@@ -10,7 +10,7 @@ function Contact(params) {
     async function handlefrom(e) {
         e.preventDefault()
         try {
-            const data = await fetch("http://localhost:5000/api/handlecontactform", {
+            const data = await fetch("https://portfolio-sq6v.onrender.com/api/handlecontactform", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json"

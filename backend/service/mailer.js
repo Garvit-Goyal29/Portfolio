@@ -1,46 +1,26 @@
-import nodemailer from "nodemailer";
-import dns from "node:dns";
-
-// Diagnostic checks to help debug missing variables in Render Logs
-if (!process.env.EMAIL_USER) {
-    console.error("mailer.js error: EMAIL_USER environment variable is missing!");
-}
-if (!process.env.EMAIL_PASS) {
-    console.error("mailer.js error: EMAIL_PASS environment variable is missing!");
-}
-
-const smtpPort = Number(process.env.SMTP_PORT || 465);
-dns.setDefaultResultOrder("ipv4first");
+import nodemailer from 'nodemailer'
+import dotenv from 'dotenv'
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port: smtpPort,
-    secure: smtpPort === 465,
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    requireTLS: smtpPort !== 465,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
-    lookup(hostname, options, callback) {
-        return dns.lookup(hostname, { ...options, family: 4 }, callback);
+        pass: process.env.EMAIL_PASS,
     },
     tls: {
         rejectUnauthorized: false
-    },
-    family: 4
+    }
 });
 
-transporter.verify((err) => {
-    if (err){
-        console.error("Mailer setup verification failed:", err);
+transporter.verify(function (error, success) {
+    if (error) {
+        console.error("Mailer Configuration Error:", error);
+    } else {
+        console.log("Mailer is ready to send emails");
     }
-  else
-    console.log(
-        "Mailer Connected"
-    );
 });
 
 export default transporter;

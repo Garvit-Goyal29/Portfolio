@@ -9,7 +9,7 @@ function Home() {
                 <div className="w-full md:w-[50%] h-auto md:h-full flex flex-col justify-start items-start px-5 md:pl-[3vw] md:pr-0 text-white pb-[3vh]">
                     <div className="pt-[4vh] md:pt-[5vh]">
                         <div className="mb-[4vh]">
-                            <h2 className="sora text-xl sm:text-2xl md:text-3xl typing mr-[0.5vw]">Full Stack Developer.</h2>
+                            <h2 className="sora text-lg md:text-3xl typing mr-[0.5vw]">Full Stack Developer.</h2>
                             <span className="text-4xl md:text-5xl font-extralight blink relative bottom-1">|</span>
                         </div>
                         <h1 className="text-purple-400 text-3xl md:text-4xl sora">Hello,I'm</h1>

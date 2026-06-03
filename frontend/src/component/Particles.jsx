@@ -6,9 +6,16 @@ function Particles() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     let particles = [];
-    const numParticles = 80;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    let animationFrameId = null;
+    let isVisible = false;
+    const numParticles = window.innerWidth < 768 ? 30 : 55;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
     for (let i = 0; i < numParticles; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -35,17 +42,34 @@ function Particles() {
         ctx.fill();
       });
 
-      requestAnimationFrame(animate);
+      if (isVisible) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
     }
 
-    animate();
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
 
-    // resize fix
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
 
+      if (!isVisible && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe(canvas);
+    window.addEventListener("resize", resizeCanvas);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", resizeCanvas);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
 
   return (

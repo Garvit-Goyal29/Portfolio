@@ -1,7 +1,7 @@
-import Spline from '@splinetool/react-spline';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaJava, FaGitAlt, FaGithub } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiTailwindcss, SiVercel } from "react-icons/si";
 import { useInView } from 'react-intersection-observer'
+import OptimizedSpline from "./OptimizedSpline.jsx";
 import './Skills.css'
 function Skills() {
     const { ref: firstSkill, inView: fsVisible } = useInView({
@@ -62,7 +62,11 @@ function Skills() {
         <>
             <div ref={firstSkill} id="skills" className={`s ${fsVisible ? "ss" : ""} w-full min-h-screen md:h-screen relative py-[5vh] md:py-[3vh]`}>
                 <div className="absolute inset-0 z-0">
-                    <Spline scene="https://prod.spline.design/nVwbLanFnaJSzsOt/scene.splinecode" />
+                    <OptimizedSpline
+                        scene="https://prod.spline.design/nVwbLanFnaJSzsOt/scene.splinecode"
+                        enabled={fsVisible}
+                        fallback={<div className="w-full h-full bg-purple-900/10" />}
+                    />
                 </div>
                 <h1 className='text-3xl md:text-4xl sora text-purple-400 text-center z-10 relative inset-0 mb-[5vh]'>Skills</h1>
                 <div className="flex flex-wrap relative z-10 px-5 md:px-[5vw] gap-5 sm:gap-8 md:gap-[10vw] justify-center items-center pointer-events-none">

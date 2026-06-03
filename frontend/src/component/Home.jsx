@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import Spline from '@splinetool/react-spline';
+import OptimizedSpline from "./OptimizedSpline.jsx";
 import './Home.css'
 
 function Home() {
@@ -75,7 +75,10 @@ function Home() {
                 </div>
                 <div className="relative w-full md:w-[50%] h-[55vh] sm:h-[62vh] md:h-full">
                     <div className="w-full h-full scale-[0.75] sm:scale-[0.8] md:scale-[0.85] relative bottom-[4vh] md:bottom-[6vh]">
-                        <Spline scene="https://prod.spline.design/0UiiESxBKNdm64-Q/scene.splinecode" />
+                        <OptimizedSpline
+                            scene="https://prod.spline.design/0UiiESxBKNdm64-Q/scene.splinecode"
+                            fallback={<div className="w-full h-full rounded-full bg-purple-500/10 blur-3xl" />}
+                        />
                     </div>
                     <button className="absolute md:relative bg-purple-400 hover:scale-[1.1] transition duration-100 bottom-[5vh] md:bottom-[20.1vh] left-[10vw] md:left-[6vw] px-4 md:px-[1vw] py-2 md:py-[1vh] w-[36vw] sm:w-[28vw] md:w-[11vw] rounded-full sora text-sm">My Resume</button>
                     <button className="absolute md:relative bg-purple-400 hover:scale-[1.1] transition duration-100 bottom-[5vh] md:bottom-[20.1vh] left-[54vw] sm:left-[44vw] md:left-[23vw] px-4 md:px-[1vw] py-2 md:py-[1vh] w-[36vw] sm:w-[28vw] md:w-[11vw] rounded-full sora text-sm">Reach out</button>

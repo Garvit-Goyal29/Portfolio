@@ -1,5 +1,4 @@
 import bg from './assets/bg.jpeg'
-import { motion } from 'motion/react'
 import { lazy, Suspense } from "react";
 import Navbar from "./component/Navbar.jsx";
 const Home = lazy(() => import("./component/Home.jsx"));
@@ -11,18 +10,10 @@ function App() {
   return (
     <>
       <div className='relative w-full min-h-screen bg-black'>
-        <motion.img
-          animate={{
-            opacity: [1, 0.85, 0.6, 0.85, 1]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
+        <img
           src={bg}
           alt=""
-          className='w-full h-screen fixed top-0 left-0 object-cover z-0 pointer-events-none'
+          className='w-full h-screen fixed top-0 left-0 object-cover z-0 pointer-events-none opacity-80'
         />
         <div className='relative z-10'>
           <Navbar />

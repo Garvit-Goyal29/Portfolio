@@ -7,7 +7,7 @@ const API_BASE_URL =
     import.meta.env.VITE_API_BASE_URL ||
     (import.meta.env.DEV ? "http://localhost:5000" : "https://portfolio-sq6v.onrender.com");
 
-function Contact(params) {
+function Contact() {
     const [name, setname] = useState("")
     const [email, setemail] = useState("")
     const [sub, setsub] = useState("")
@@ -51,9 +51,9 @@ function Contact(params) {
                 id="contact" className="relative bg-black w-full min-h-screen">
                 <Particles />
                 <div className='flex flex-col justify-center items-center w-full h-full pt-[5vh]'>
-                    <h1 className='sora text-purple-400 text-center text-4xl h-[10vh]'>Contact</h1>
-                    <div className='w-full h-[85vh] flex'>
-                        <div className='w-[50%] h-full flex justify-center items-center'>
+                    <h1 className='sora text-purple-400 text-center text-3xl md:text-4xl h-auto md:h-[10vh] mb-6 md:mb-0'>Contact</h1>
+                    <div className='w-full min-h-[85vh] md:h-[85vh] flex flex-col md:flex-row'>
+                        <div className='w-full md:w-[50%] h-[34vh] md:h-full flex justify-center items-center'>
                             <motion.img
                                 animate={{
                                     y: [0, 25, 0, 25, 0]
@@ -62,9 +62,9 @@ function Contact(params) {
                                     duration: 5,
                                     repeat: Infinity
                                 }}
-                                src={contactEle} alt="" className='scale-75' />
+                                src={contactEle} alt="" className='scale-50 sm:scale-60 md:scale-75' />
                         </div>
-                        <div className='w-[50%] h-full px-[5vw] pb-[5vh]'>
+                        <div className='w-full md:w-[50%] h-full px-5 md:px-[5vw] pb-[5vh]'>
                             <div className="w-full bg-purple-900/20 backdrop-blur-2xl rounded-2xl p-4 border border-white/20">
                                 <h1 className="text-3xl text-purple-400 mb-6 text-center sora">
                                     Contact Me

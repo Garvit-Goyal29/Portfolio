@@ -50,9 +50,9 @@ function Contact() {
             <div
                 id="contact" className="relative bg-black w-full min-h-screen">
                 <Particles />
-                <div className='flex flex-col justify-center items-center w-full h-full pt-[5vh]'>
-                    <h1 className='sora text-purple-400 text-center text-3xl md:text-4xl h-auto md:h-[10vh] mb-6 md:mb-0'>Contact</h1>
-                    <div className='w-full min-h-[85vh] md:h-[85vh] flex flex-col md:flex-row'>
+                <div className='flex flex-col md:justify-center justify-evenly items-center w-full md:h-full h-screen md:pt-[5vh] pt-[1vh]'>
+                    <h1 className='sora text-purple-400 text-center text-6xl md:text-4xl h-auto md:h-[10vh] mb-3 md:mb-0'>Contact</h1>
+                    <div className='w-full min-h-[80vh] md:h-[85vh] flex flex-col md:flex-row'>
                         <div className='w-full md:w-[50%] h-[34vh] md:h-full flex justify-center items-center'>
                             <motion.img
                                 animate={{
@@ -62,9 +62,9 @@ function Contact() {
                                     duration: 5,
                                     repeat: Infinity
                                 }}
-                                src={contactEle} alt="" className='scale-50 sm:scale-60 md:scale-75' />
+                                src={contactEle} alt="" className='scale-67 sm:scale-50 md:scale-70' />
                         </div>
-                        <div className='w-full md:w-[50%] h-full px-5 md:px-[5vw] pb-[5vh]'>
+                        <div className='w-full md:w-[50%] h-full px-[3vw] md:px-[1vh] flex justify-center items-center'>
                             <div className="w-full bg-purple-900/20 backdrop-blur-2xl rounded-2xl p-4 border border-white/20">
                                 <h1 className="text-3xl text-purple-400 mb-6 text-center sora">
                                     Contact Me

@@ -1,7 +1,8 @@
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaJava, FaGitAlt, FaGithub } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiTailwindcss, SiVercel } from "react-icons/si";
 import { useInView } from 'react-intersection-observer'
-import OptimizedSpline from "./OptimizedSpline.jsx";
+import OptimizedSpline from '../component/OptimizedSpline.jsx'
+import BubbleBackground from "./BubbleBackground.jsx";
 import './Skills.css'
 function Skills() {
     const { ref: firstSkill, inView: fsVisible } = useInView({
